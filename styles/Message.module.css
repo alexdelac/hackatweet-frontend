@@ -1,0 +1,15 @@
+.container{
+    height: 200px;
+    border: 1px solid #353c47;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.userContainer{
+    display: flex;
+}
+
+.icon{
+    display: flex;
+}

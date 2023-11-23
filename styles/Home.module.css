@@ -1,22 +1,41 @@
-.main {
+.container {
+  height: 100vh;
+  width: 40vw;
+  border-right: 2px solid #353c47;
+  margin: 0;
+}
+
+.header{
+  width: 100%;
+  margin: 0px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 4rem 0;
+  border-bottom:2px solid #353c47;
 }
 
-.title {
-  line-height: 1.15;
-  font-size: 4rem;
+.input {
+  width: 80%;
+  background-color: #161d28;
+  height: 60px;
+  border: none;
+  border-bottom: 2px solid #353c47;
+  align-self: center;
+  font-size: 25px;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+.button {
+  border-radius: 25px;
+  width: 100px;
+  height: 35px;
+  background-color: #398fee;
+  color: white;
+  margin-left: 10px;
+  align-self: center;
 }
 
-.title a:hover, .title a:focus, .title a:active {
-  text-decoration: underline;
+.addContainer{
+  display: flex;
+  align-self: flex-end;
+  margin-right: 50px;
+  margin-top: 10px;
 }
