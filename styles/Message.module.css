@@ -13,3 +13,7 @@
 .icon{
     display: flex;
 }
+
+.messContainer{
+    display: flex;
+}
