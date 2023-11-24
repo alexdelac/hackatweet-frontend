@@ -8,13 +8,14 @@ import { useRouter } from "next/router";
 
 function Login() {
   const router = useRouter();
-  const user = useSelector((state) => state.users.value);
   const dispatch = useDispatch();
   const [signupOpen, setsignupOpen] = useState(false);
   const [signinOpen, setsigninOpen] = useState(false);
-  const [firstname, setFirstname] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [usernameSignup, setUsernameSignup] = useState("");
+  const [firstnameSignup, setFirstnameSignup] = useState("");
+  const [passwordSignup, setPasswordSignup] = useState("");
+  const [usernameSignin, setUsernameSignin] = useState("");
+  const [passwordSignin, setPasswordSignin] = useState("");
 
   const openSignup = () => {
     setsignupOpen(true);
@@ -32,9 +33,9 @@ function Login() {
   const signup = (e) => {
     e.preventDefault();
     const profil = {
-      firstname: firstname,
-      username: username,
-      password: password,
+      firstname: firstnameSignup,
+      username: usernameSignup,
+      password: passwordSignup,
     };
     fetch("http://localhost:3000/users/signup", {
       method: "POST",
@@ -43,19 +44,22 @@ function Login() {
     })
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         dispatch(addUser(data));
+        if (data.result) {
+          router.push("/home");
+        }
       });
-    setFirstname("");
-    setUsername("");
-    setPassword("");
-    router.push("/home");
+    setFirstnameSignup("");
+    setUsernameSignup("");
+    setPasswordSignup("");
   };
 
   const signin = (e) => {
     e.preventDefault();
     const profil = {
-      username: username,
-      password: password,
+      username: usernameSignin,
+      password: passwordSignin,
     };
     fetch("http://localhost:3000/users/signin", {
       method: "POST",
@@ -66,10 +70,12 @@ function Login() {
       .then((data) => {
         dispatch(addUser(data));
         console.log(data);
+        if (data.result) {
+          router.push("/home");
+        }
       });
-    setUsername("");
-    setPassword("");
-    router.push("/home");
+    setUsernameSignin("");
+    setPasswordSignin("");
   };
 
   return (
@@ -105,20 +111,20 @@ function Login() {
               <input
                 type="text"
                 placeholder="username"
-                onChange={(e) => setUsername(e.target.value)}
-                value={username}
+                onChange={(e) => setUsernameSignup(e.target.value)}
+                value={usernameSignup}
               />
               <input
                 type="text"
                 placeholder="firstname"
-                onChange={(e) => setFirstname(e.target.value)}
-                value={firstname}
+                onChange={(e) => setFirstnameSignup(e.target.value)}
+                value={firstnameSignup}
               />
               <input
                 type="password"
                 placeholder="password"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
+                onChange={(e) => setPasswordSignup(e.target.value)}
+                value={passwordSignup}
               />
               <button className={styles.signupBtn} onClick={signup}>
                 sign up
@@ -136,8 +142,18 @@ function Login() {
             <FontAwesomeIcon icon={faTwitter} className={styles.icon} />
             <h4>Connect to Hackatweet</h4>
             <form className={styles.modalForm}>
-              <input type="text" placeholder="username" />
-              <input type="password" placeholder="password" />
+              <input
+                type="text"
+                placeholder="username"
+                onChange={(e) => setUsernameSignin(e.target.value)}
+                value={usernameSignin}
+              />
+              <input
+                type="password"
+                placeholder="password"
+                onChange={(e) => setPasswordSignin(e.target.value)}
+                value={passwordSignin}
+              />
               <button className={styles.signupBtn} onClick={signin}>
                 sign in
               </button>
