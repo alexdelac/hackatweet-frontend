@@ -3,19 +3,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 
 
+
 function Message(props) {
+
+ 
+  let likeStyle = {}
+  if (props.isLiked){
+    likeStyle = {"color": "#f51772"}
+  }
 
 
     function like(){
-        fetch('http://localhost:3000/like', {
+        fetch('http://localhost:3000/tweets/like', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({message: props.message, token: 'Hux0Gb0-1k5ACiyYii8Foo_m-ZWcSQGo'})
         })
             .then(response=>response.json())
             .then(data=>{
-                console.log(data)
+                
             })
+            props.refresh()
     }
 
 
@@ -29,11 +37,11 @@ function Message(props) {
           <p>{props.moment}</p>
         </div>
         <div className={styles.messContainer}>
-          <p>{props.message}</p>
+          <p className={styles.message}>{props.message}</p>
           <p style={{"color": "#398fee"}}>{props.trend}</p>
         </div>
         <div className={styles.icon}>
-            <FontAwesomeIcon icon={faHeart} /><span>0</span>
+            <FontAwesomeIcon icon={faHeart} style={likeStyle} onClick={()=>like()}/><span className={styles.count}style={likeStyle}>{props.likeCount}</span>
             <FontAwesomeIcon icon={faTrashCan} />
         </div>
         

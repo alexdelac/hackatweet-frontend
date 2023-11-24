@@ -10,7 +10,11 @@ function Home() {
     console.log(tweet)
 
   useEffect(()=>{
-    fetch('http://localhost:3000/tweets')
+    fetch('http://localhost:3000/tweets/display', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({token: 'Hux0Gb0-1k5ACiyYii8Foo_m-ZWcSQGo'})
+    })
       .then(response=>response.json())
       .then(data=>{
         setMessages(data.dataReturn.reverse())
@@ -31,10 +35,14 @@ function addTweet(){
       })
 }
 
+function refresh(){
+  setAdd(!add)
+}
+
 
 
 const message = messages.map((data, i)=>{
-    return <Message key={i} firstName={data.firstName} userName={data.userName} moment={data.moment} message={data.message} trend={data.trend}/>
+    return <Message key={i} firstName={data.firstName} userName={data.userName} moment={data.moement} message={data.message} trend={data.trend} isLiked={data.isLiked} likeCount={data.likeCount} refresh={refresh}/>
 })
 
 
@@ -42,7 +50,7 @@ const message = messages.map((data, i)=>{
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>Home</h1>
-        <input type='text' placeholder="What's up?" className={styles.input} maxlength="280" onChange={((e)=>  setTweet(e.target.value))}/>
+        <input type='text' placeholder="What's up?" className={styles.input} maxlength="280" require onChange={((e)=>  setTweet(e.target.value))}/>
         <div className={styles.addContainer}>
           <p className={styles.counter}><span>{tweet.length}</span>/280</p>
           <button className={styles.button} onClick={()=>addTweet()}>Tweet</button>

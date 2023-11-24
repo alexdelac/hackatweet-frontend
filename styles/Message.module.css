@@ -22,7 +22,15 @@
     margin: 15px;
 }
 
+.message{
+    margin-right: 10px;
+}
+
 .username{
     color: #6b7582;
     margin-left: 10px;
+}
+
+.count{
+    margin-right: 15px;
 }
