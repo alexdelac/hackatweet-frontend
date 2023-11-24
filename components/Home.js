@@ -43,7 +43,7 @@ function refresh(){
 
 
 const message = messages.map((data, i)=>{
-    return <Message key={i} firstName={data.firstName} userName={data.userName} moment={data.moement} message={data.message} trend={data.trend} isLiked={data.isLiked} likeCount={data.likeCount} refresh={refresh}/>
+    return <Message key={i} firstName={data.firstName} userName={data.userName} moment={data.moement} message={data.message} trend={data.trend} isLiked={data.isLiked} likeCount={data.likeCount} trash={data.trash} refresh={refresh}/>
 })
 
 

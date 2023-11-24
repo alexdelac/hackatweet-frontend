@@ -11,7 +11,7 @@ export const usersSlice = createSlice({
   reducers: {
     addUser: (state, action) => {
       //ajoute le user au state (firstname + username + token)
-      state.value.push(action.payload);
+      state.value = [action.payload];
     },
     removeUser: (state, action)=>{
       state.value = []

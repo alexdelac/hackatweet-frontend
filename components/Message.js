@@ -23,12 +23,23 @@ function Message(props) {
         })
             .then(response=>response.json())
             .then(data=>{
-                
+              props.refresh()
+            })
+            
+    }
+
+    function deleteTweet(){
+      fetch('http://localhost:3000/tweets/delete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({message: props.message})
+        })
+            .then(response=>response.json())
+            .then(data=>{
+              
             })
             props.refresh()
     }
-
-
 
   return (
     <div className={styles.container}>
@@ -44,7 +55,7 @@ function Message(props) {
         </div>
         <div className={styles.icon}>
             <FontAwesomeIcon icon={faHeart} style={likeStyle} onClick={()=>like()}/><span className={styles.count}style={likeStyle}>{props.likeCount}</span>
-            <FontAwesomeIcon icon={faTrashCan} />
+           {props.trash && <FontAwesomeIcon icon={faTrashCan} onClick={()=>deleteTweet()}/>}
         </div>
         
     </div>
