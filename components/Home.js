@@ -51,7 +51,7 @@ const message = messages.map((data, i)=>{
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>Home</h1>
-        <input type='text' placeholder="What's up?" className={styles.input} maxlength="280" require onChange={((e)=>  setTweet(e.target.value))}/>
+        <input type='text' placeholder="What's up?" className={styles.input} maxLength={280} require onChange={((e)=>  setTweet(e.target.value))}/>
         <div className={styles.addContainer}>
           <p className={styles.counter}><span>{tweet.length}</span>/280</p>
           <button className={styles.button} onClick={()=>addTweet()}>Tweet</button>
