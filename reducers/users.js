@@ -13,8 +13,11 @@ export const usersSlice = createSlice({
       //ajoute le user au state (firstname + username + token)
       state.value.push(action.payload);
     },
+    removeUser: (state, action)=>{
+      state.value = []
+    }
   },
 });
 
-export const { addUser } = usersSlice.actions;
+export const { addUser, removeUser } = usersSlice.actions;
 export default usersSlice.reducer;

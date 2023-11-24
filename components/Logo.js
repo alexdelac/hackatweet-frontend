@@ -1,9 +1,24 @@
 import styles from "../styles/Logo.module.css";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {removeUser} from '../reducers/users'
+import {useRouter} from 'next/router'
 
 function Logo() {
+
+    const dispatch = useDispatch()
+    const router = useRouter()
+    const user = useSelector((state)=>state.users.value[0].newUser)
+    console.log(user)
+
+
+  function logout(){
+      dispatch(removeUser())
+      router.push('/login')
+  }
+
+
   return (
     <div className={styles.container}>
       <div>
@@ -14,11 +29,11 @@ function Logo() {
         <div className={styles.logoutContainer}>
           <img src="/images/iconAvatar.png" />
           <div>
-            <h2 className={styles.firstname}>Name</h2>
-            <p className={styles.username}>@username</p>
+            <h2 className={styles.firstname}>{user.firstname}</h2>
+            <p className={styles.username}>@{user.username}</p>
           </div>
         </div>
-        <button className={styles.button}>Logout</button>
+        <button className={styles.button} onClick={logout}>Logout</button>
       </div>
     </div>
   );

@@ -1,19 +1,20 @@
 import styles from '../styles/Home.module.css';
 import Message from '../components/Message';
 import {useEffect, useState} from 'react'
+import {useSelector} from 'react-redux'
 
 function Home() {
 
     const [messages, setMessages]=useState([])
     const [tweet, setTweet]=useState('')
     const [add, setAdd]= useState(false)
-    console.log(tweet)
+    const user = useSelector((state)=>state.users.value[0].newUser)
 
   useEffect(()=>{
     fetch('http://localhost:3000/tweets/display', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({token: 'Hux0Gb0-1k5ACiyYii8Foo_m-ZWcSQGo'})
+      body: JSON.stringify({token: `${user.token}`})
     })
       .then(response=>response.json())
       .then(data=>{
@@ -26,7 +27,7 @@ function addTweet(){
     fetch('http://localhost:3000/tweets', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({message: tweet, token: 'Hux0Gb0-1k5ACiyYii8Foo_m-ZWcSQGo'})
+      body: JSON.stringify({message: tweet, token: `${user.token}`})
     })
       .then(response =>response.json)
       .then(data=>{
