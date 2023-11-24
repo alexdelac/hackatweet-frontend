@@ -1,13 +1,10 @@
-import styles from '../styles/TrendMess.module.css';
+import styles from "../styles/TrendMess.module.css";
 
 function TrendMess() {
   return (
-    <div>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          TREND MESSAGES COMPONENT
-        </h1>
-      </main>
+    <div className={styles.container}>
+      <h5 className={styles.hashtag}>#hashtag</h5>
+      <p className={styles.counterTweet}>counter Tweet</p>
     </div>
   );
 }
