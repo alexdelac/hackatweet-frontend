@@ -1,11 +1,13 @@
 import styles from '../styles/Message.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faTrashCan } from '@fortawesome/free-solid-svg-icons'
+import {useSelector} from 'react-redux'
 
 
 
 function Message(props) {
 
+   const user = useSelector((state)=>state.users.value[0].newUser)
  
   let likeStyle = {}
   if (props.isLiked){
@@ -17,7 +19,7 @@ function Message(props) {
         fetch('http://localhost:3000/tweets/like', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({message: props.message, token: 'Hux0Gb0-1k5ACiyYii8Foo_m-ZWcSQGo'})
+            body: JSON.stringify({message: props.message, token:  `${user.token}`})
         })
             .then(response=>response.json())
             .then(data=>{
