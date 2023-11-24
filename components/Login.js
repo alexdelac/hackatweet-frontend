@@ -51,7 +51,27 @@ function Login() {
     setFirstname("");
     setUsername("");
     setPassword("");
-    console.log(user);
+    router.push("/home");
+  };
+
+  const signin = (e) => {
+    e.preventDefault();
+    const profil = {
+      username: username,
+      password: password,
+    };
+    fetch("http://localhost:3000/users/signin", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(profil),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch(addUser(data));
+        console.log(data);
+      });
+    setUsername("");
+    setPassword("");
     router.push("/home");
   };
 
@@ -87,30 +107,23 @@ function Login() {
             <form className={styles.modalForm}>
               <input
                 type="text"
-                id="firstnameSignup"
-                placeholder="firstname"
-                onChange={(e) => setFirstname(e.target.value)}
-                value={firstname}
-              />
-              <input
-                type="text"
-                id="usernameSignup"
                 placeholder="username"
                 onChange={(e) => setUsername(e.target.value)}
                 value={username}
               />
               <input
+                type="text"
+                placeholder="firstname"
+                onChange={(e) => setFirstname(e.target.value)}
+                value={firstname}
+              />
+              <input
                 type="password"
-                id="passwordSignup"
                 placeholder="password"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
-              <button
-                id="signupBtn"
-                className={styles.signupBtn}
-                onClick={signup}
-              >
+              <button className={styles.signupBtn} onClick={signup}>
                 sign up
               </button>
             </form>
@@ -126,13 +139,9 @@ function Login() {
             <FontAwesomeIcon icon={faTwitter} className={styles.icon} />
             <h4>Connect to Hackatweet</h4>
             <form className={styles.modalForm}>
-              <input type="text" id="usernameSignin" placeholder="username" />
-              <input
-                type="password"
-                id="passwordSignin"
-                placeholder="password"
-              />
-              <button id="signinBtn" className={styles.signupBtn}>
+              <input type="text" placeholder="username" />
+              <input type="password" placeholder="password" />
+              <button className={styles.signupBtn} onClick={signin}>
                 sign in
               </button>
             </form>
