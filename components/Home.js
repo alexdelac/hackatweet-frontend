@@ -58,8 +58,15 @@ function Home() {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1 className={styles.title}>Home</h1>
-        <input type='text' placeholder="What's up?" className={styles.input} maxLength={280} require onChange={((e)=>  setTweet(e.target.value))}/>
+        <h2 className={styles.title}>Home</h2>
+        <input
+          type="text"
+          placeholder="What's up?"
+          className={styles.input}
+          maxLength={280}
+          require
+          onChange={(e) => setTweet(e.target.value)}
+        />
         <div className={styles.addContainer}>
           <p className={styles.counter}>
             <span>{tweet.length}</span>/280
@@ -69,7 +76,7 @@ function Home() {
           </button>
         </div>
       </div>
-      {message}
+      <div className={styles.content}>{message}</div>
     </div>
   );
 }

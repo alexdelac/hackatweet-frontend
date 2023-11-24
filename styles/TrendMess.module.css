@@ -3,6 +3,16 @@
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    background: rgba(255, 255, 255, .2);
+    background: rgba(255, 255, 255, .05);
     padding: 20px;
+}
+
+.hashtag {
+    font-size: 16px;
+    font-weight: 400;
+}
+.counterTweet {
+    font-size: 12px;
+    color: rgba(255, 255, 255, .5);
+    font-weight: 400;
 }
