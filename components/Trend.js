@@ -1,14 +1,11 @@
-import styles from '../styles/Trend.module.css';
+import styles from "../styles/Trend.module.css";
 
 function Trend() {
   return (
-    <div>
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          TREND COMPONENT
-        </h1>
-      </main>
-    </div>
+    <aside className={styles.container}>
+      <h2 className={styles.title}>TREND COMPONENT</h2>
+      <div className={styles.content}></div>
+    </aside>
   );
 }
 
