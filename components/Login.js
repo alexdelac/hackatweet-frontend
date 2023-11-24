@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styles from "../styles/Login.module.css";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser } from "../reducers/users";
+import { addUser, removeUser } from "../reducers/users";
 import { useRouter } from "next/router";
 
 function Login() {
@@ -15,6 +15,9 @@ function Login() {
   const [firstname, setFirstname] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+
+
 
   const openSignup = () => {
     setsignupOpen(true);

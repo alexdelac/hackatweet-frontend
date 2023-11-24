@@ -12,9 +12,8 @@ function Logo() {
     const user = useSelector((state)=>state.users.value[0].newUser)
     console.log(user)
 
-
+  
   function logout(){
-      dispatch(removeUser())
       router.push('/login')
   }
 
