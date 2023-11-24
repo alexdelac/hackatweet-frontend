@@ -44,7 +44,7 @@ function Home() {
         key={i}
         firstName={data.firstName}
         userName={data.userName}
-        moment={data.moement}
+        moment={data.date}
         message={data.message}
         trend={data.trend}
         isLiked={data.isLiked}

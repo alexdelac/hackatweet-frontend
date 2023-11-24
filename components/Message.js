@@ -2,10 +2,14 @@ import styles from '../styles/Message.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faTrashCan } from '@fortawesome/free-solid-svg-icons'
 import {useSelector} from 'react-redux'
-
+//import {moment} from 'moment'
+import {useState} from 'react'
 
 
 function Message(props) {
+
+
+  const [timeMess, setTimeMess]=useState('')
 
    const user = useSelector((state)=>state.users.value[0].newUser)
  
@@ -41,13 +45,33 @@ function Message(props) {
             props.refresh()
     }
 
+    
+   /* const dateObj = moment(props.moment)
+
+    const difference = moment().diff(dateObj)
+
+    const duree = moment.duration(difference)
+    const heure = Math.floor(duree.asHours())
+    const minutes = Math.floor(duree.asMinutes()) % 60;
+   
+    
+    if(minutes<1){
+      setTimeMess('a few seconds') 
+    } else if (heure>=1){
+      setTimeMess(`${heure} heures`) 
+    } else {
+      setTimeMess(`${minutes} minutes`) 
+    }*/
+
+
+
   return (
     <div className={styles.container}>
         <div className={styles.userContainer}>
           <img src='/images/iconAvatar.png'/>
           <p>{props.firstName}</p>
           <p className={styles.username}>@{props.userName}</p>
-          <p>{props.moment}</p>
+          <p className={styles.username}>{timeMess}</p>
         </div>
         <div className={styles.messContainer}>
           <p className={styles.message}>{props.message}</p>
