@@ -49,7 +49,7 @@ function Login() {
     setUsername("");
     setPassword("");
     console.log(user);
-    // router.push("/home");
+    router.push("/home");
   };
 
   return (
