@@ -12,7 +12,7 @@ function Logo() {
   console.log(user);
 
   function logout() {
-    dispatch(removeUser());
+   
     router.push("/login");
   }
 
