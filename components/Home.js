@@ -41,10 +41,10 @@ const message = messages.map((data, i)=>{
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>Home</h1>
+        <h1 className={styles.title}>Home</h1>
         <input type='text' placeholder="What's up?" className={styles.input} maxlength="280" onChange={((e)=>  setTweet(e.target.value))}/>
         <div className={styles.addContainer}>
-          <p><span>{tweet.length}</span>/280</p>
+          <p className={styles.counter}><span>{tweet.length}</span>/280</p>
           <button className={styles.button} onClick={()=>addTweet()}>Tweet</button>
         </div>
       </div>

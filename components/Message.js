@@ -25,7 +25,7 @@ function Message(props) {
         <div className={styles.userContainer}>
           <img src='/images/iconAvatar.png'/>
           <p>{props.firstName}</p>
-          <p>{props.userName}</p>
+          <p className={styles.username}>@{props.userName}</p>
           <p>{props.moment}</p>
         </div>
         <div className={styles.messContainer}>

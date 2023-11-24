@@ -1,23 +1,23 @@
 import styles from '../styles/Logo.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLike } from '@fortawesome/free-solid-svg-icons'
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Logo() {
   return (
     <div className={styles.container}>
       <div>
-        ICONE
+      <FontAwesomeIcon icon={faTwitter} className={styles.logo} />
       </div>
       
       <div>
-        <div>
-          <div>Avatar</div>
+        <div className={styles.logoutContainer}>
+          <img src='/images/iconAvatar.png'/>
           <div>
-              <h2>name</h2>
-              <p>username</p>
+              <h2 className={styles.firstname}>Name</h2>
+              <p className={styles.username}>@username</p>
           </div>
         </div>
-        <button>Logout</button>
+        <button className={styles.button}>Logout</button>
         
       </div>
     </div>

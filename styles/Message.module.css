@@ -1,5 +1,5 @@
 .container{
-    height: 200px;
+    height: 160px;
     border: 1px solid #353c47;
     display: flex;
     flex-direction: column;
@@ -8,12 +8,21 @@
 
 .userContainer{
     display: flex;
+    align-items: center;
 }
 
 .icon{
     display: flex;
+    margin-left: 15px;
+    margin-bottom: 10px;
 }
 
 .messContainer{
     display: flex;
+    margin: 15px;
+}
+
+.username{
+    color: #6b7582;
+    margin-left: 10px;
 }
